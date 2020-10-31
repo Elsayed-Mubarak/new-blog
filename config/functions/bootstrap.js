@@ -1,13 +1,19 @@
 'use strict';
 
-/**
- * An asynchronous bootstrap function that runs before
- * your application gets started.
- *
- * This gives you an opportunity to set up your data model,
- * run jobs, or perform some special logic.
- *
- * See more details here: https://strapi.io/documentation/v3.x/concepts/configurations.html#bootstrap
- */
 
-module.exports = () => {};
+const categorySeed = require('../../seed/category');
+
+const seed = async (collection, data) => {
+  try {
+    const count = await strapi.services[collection].count();
+    if (count === 0) {
+      data.forEach(item => strapi.services[collection].create(item));
+    }
+  } catch (e) {
+    console.error('Failed to seed the data ....', e);
+  }
+};
+
+module.exports = async () => {
+  seed('category', categorySeed);
+};

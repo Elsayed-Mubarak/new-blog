@@ -33,6 +33,14 @@
       }
     },
     {
+      "method": "POST",
+      "path": "/categoryName",
+      "handler": "category.findbycategoryname",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "PUT",
       "path": "/categories/:id",
       "handler": "category.update",

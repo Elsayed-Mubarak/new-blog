@@ -5,4 +5,15 @@
  * to customize this controller
  */
 
-module.exports = {};
+
+
+module.exports.findByCategoryName = async (ctx) => {
+    try {
+        const relatedArticle = await strapi.query('article').find({}, ['category', `category.${ctx.request.body.name}`]);
+        console.log("..............", relatedArticle);
+        ctx.send(relatedArticle)
+    }
+    catch (e) {
+        console.log("error ...", e);
+    }
+}

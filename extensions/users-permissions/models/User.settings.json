@@ -60,7 +60,7 @@
       "configurable": false
     },
     "articles": {
-      "via": "author",
+      "via": "users_permissions_user",
       "collection": "article"
     }
   }
